@@ -44,13 +44,13 @@
 		},function(){
 			$(this).removeClass('photoGallery-next-btn-show');
 		}).click(function(e){
-				e.stopPropagation();
-				if($(this).hasClass('photoGallery-next-btn-show')){
-					self.goto("next");
-				} else if(self.picData.length == 1){
-					self.mask.fadeOut();
-					self.picWrapper.fadeOut();
-				}
+			e.stopPropagation();
+			if($(this).hasClass('photoGallery-next-btn-show')){
+				self.goto("next");
+			} else if(self.picData.length == 1){
+				self.mask.fadeOut();
+				self.picWrapper.fadeOut();
+			}
 		});
 		this.prevBtn.hover(function(){
 			if(self.index >=1){
@@ -61,13 +61,13 @@
 		},function(){
 			$(this).removeClass('photoGallery-prev-btn-show');
 		}).click(function(e){
-				e.stopPropagation();
-				if($(this).hasClass('photoGallery-prev-btn-show')){
-					self.goto("prev");
-				} else if(self.picData.length == 1){
-					self.mask.fadeOut();
-					self.picWrapper.fadeOut();
-				}
+			e.stopPropagation();
+			if($(this).hasClass('photoGallery-prev-btn-show')){
+				self.goto("prev");
+			} else if(self.picData.length == 1){
+				self.mask.fadeOut();
+				self.picWrapper.fadeOut();
+			}
 		});
 		this.timer = null;
 		$(window).keyup(function(e){
@@ -120,22 +120,22 @@
 		},
 		showMaskAndWrapper : function(obj){
 			var self = this,
-				curSrc = obj.attr("data-src"),
-				curId = obj.attr("data-id"),
-				curDesc = obj.attr("data-desc");
-				this.picIndex.hide();
-				this.picDesc.hide();
-				this.picCon.hide();
-				this.closeBtn.hide();
-				this.index = this.getIndexOf(curId);
+			curSrc = obj.attr("data-src"),
+			curId = obj.attr("data-id"),
+			curDesc = obj.attr("data-desc");
+			this.picIndex.hide();
+			this.picDesc.hide();
+			this.picCon.hide();
+			this.closeBtn.hide();
+			this.index = this.getIndexOf(curId);
 
-				this.resizePic();
-				this.mask.fadeIn();
-				this.picWrapper.fadeIn();
+			this.resizePic();
+			this.mask.fadeIn();
+			this.picWrapper.fadeIn();
 
-				this.loadImg(curSrc,function(){
-					self.changePic(curSrc);
-				});
+			this.loadImg(curSrc,function(){
+				self.changePic(curSrc);
+			});
 		},
 		resizePic : function(){
 			var width = $(window).width();
@@ -184,7 +184,7 @@
 		getData : function(){
 			var self = this;
 			var dataList = $('div#photoGallery-container').find('.photoGallery');
-			 dataList.each(function(){
+			dataList.each(function(){
 				self.picData.push({
 					id:$(this).attr("data-id"),
 					src:$(this).attr("data-src"),
@@ -194,13 +194,13 @@
 		},
 		renderDOM : function(){
 			this.mask.html('<span class="photoGallery-btn photoGallery-prev-btn"></span>'+
-		                   '<span class="photoGallery-btn photoGallery-next-btn"></span>');
+				'<span class="photoGallery-btn photoGallery-next-btn"></span>');
 			this.picWrapper.html('<span class="photoGallery-close-btn"></span>'+
-								 '<div class="photoGallery-picIndex">'+
-								 '</div>'+
-								 '<img class="photoGallery-picCon" src="">'+
-								 '<div class="photoGallery-picDesc">'+
-								 '</div>');
+				'<div class="photoGallery-picIndex">'+
+				'</div>'+
+				'<img class="photoGallery-picCon" src="">'+
+				'<div class="photoGallery-picDesc">'+
+				'</div>');
 			this.bodyNode.append(this.mask,this.picWrapper);
 		}
 	};
